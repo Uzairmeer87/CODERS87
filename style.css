@@ -9,7 +9,10 @@ body {
   color: white;
   font-family: "Poppins", sans-serif;
 }
-
+.decorate{
+  text-decoration: none;
+  color: white;
+}
 .navbar {
   position: absolute;
   top: 0;
