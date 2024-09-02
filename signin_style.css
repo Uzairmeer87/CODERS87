@@ -1,158 +1,187 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
+    /* Font import and global reset */
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-body {
-    background: url("netflix1.jpg")
-    
-}
+    /* Global reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
 
-body::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100;
-    height: 100;
-    opacity: 0.5;
-    background: url(netflix2/netflix1.jpg);
-    background-position: center;
-}
+    /* Body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #000;
+    }
 
-nav {
-    position: fixed;
-    z-index: 1;
-    padding: 25px 60px;
-}
+    /* Section styles */
+    section {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
 
-nav a img {
-    width: 160px;
+    /* Animated gradient effect */
+    section::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(#000, #f00, #000);
+      animation: animate 5s linear infinite;
+    }
 
-}
+    /* Animation keyframes */
+    @keyframes animate {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(100%);
+      }
+    }
 
-.form-wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 430px;
-    padding: 60px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.75);
-    transform: translate(-50%, -50%);
-    color: white;
-}
+    /* Styling for individual spans */
+    section span {
+      position: relative;
+      display: block;
+      width: calc(6.25vw - 2px);
+      height: calc(6.25vw - 2px);
+      background: #181818;
+      z-index: 2;
+      transition: 1.5s;
+    }
 
-.form-wrapper h2 {
-    color: #fff;
-    font-size: 2rem;
-}
+    section span:hover {
+      background: #f00;
+      transition: 0s;
+    }
 
-.form-wrapper form {
-    margin: 25px 0 65px;
-}
+    /* Sign-in form styles */
+    .signin {
+      position: absolute;
+      width: 400px;
+      background: #222;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    }
 
-form.form-control {
-    position: relative;
-    height: 50px;
-    margin-bottom: 16px;
-}
+    .signin .content {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 40px;
+    }
 
-.form-control input {
-    height: 100%;
-    width: 100%;
-    background-color: #333;
-    outline: none;
-    border: none;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 4px;
-    padding: 0 20px;
-}
+    .signin .content h2 {
+      font-size: 2em;
+      color: #f00;
+      text-transform: uppercase;
+    }
 
-.form-control input:is(:focus, :valid)~label {
-    padding: 16px 20px 0;
-    background: #444;
-}
+    .signin .content .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
 
-.form-control label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    color: #8c8c8c;
-    pointer-events: none;
-    font-size: 1rem;
-    transform: translatey(-50%);
-    transition: all 0.1s ease;
-}
+    .signin .content .form .inputBox {
+      position: relative;
+      width: 100%;
+    }
 
-.form-control input:is(:focus, :valid)~label {
-    font-size: 0.75rem;
-    transform: translatey(-130%);
-}
+    .signin .content .form .inputBox input {
+      position: relative;
+      width: 100%;
+      background: #333;
+      border: none;
+      outline: none;
+      padding: 25px 10px 7.5px;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1em;
+    }
 
-form button {
-    width: 100%;
-    padding: 16px 0;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 500;
-    border-radius: 5px;
-    background: #e50914;
-    margin: 25px 0 10px;
-    transition: 0.1 ease;
-}
+    .signin .content .form .inputBox i {
+      position: absolute;
+      left: 0;
+      padding: 15px 10px;
+      font-style: normal;
+      color: #aaa;
+      transition: 0.5s;
+      pointer-events: none;
+    }
 
-form button:hover {
-    background-color: #c40812;
-}
+    .signin .content .form .inputBox input:focus ~ i,
+    .signin .content .form .inputBox input:valid ~ i {
+      transform: translateY(-7.5px);
+      font-size: 0.8em;
+      color: #fff;
+    }
 
-form.form-help {
-    display: flex;
-    justify-content: space-between;
-}
+    .signin .content .form .links {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
 
-form.remember-me {
-    display: flex;
-}
+    .signin .content .form .links a {
+      color: #fff;
+      text-decoration: none;
+    }
 
-form.remember-me input {
-    margin-right: 5px;
-    accent-color: #b3b3b3;
-}
+    .signin .content .form .links a:nth-child(2) {
+      color: #f00;
+      font-weight: 600;
+    }
 
-form.form-help:where(label, a) {
-    font-size: 0.9rem;
-}
+    .signin .content .form .inputBox input[type="submit"] {
+      padding: 10px;
+      background: #f00;
+      color: #000;
+      font-weight: 600;
+      font-size: 1.35em;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
 
-.form-wrapper:where(label, p, small, a) {
-    color: #b3b3b3;
-}
+    input[type="submit"]:active {
+      opacity: 0.6;
+    }
 
-.form-wrapper p a {
-    color: #fff;
-}
+    /* Media queries for responsive design */
+    @media (max-width: 900px) {
+      section span {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+      }
+    }
 
-.form-wrapper small {
-    display: block;
-    margin: 15px;
-}
-
-.form-wrapper small a {
-    color: #0071eb;
-}
-
-.form-wrapper a {
-    text-decoration: none;
-}
-
-.form-wrapper a:hover {
-    text-decoration: underline;
-}
+    @media (max-width: 600px) {
+      section span {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+      }
+    }
